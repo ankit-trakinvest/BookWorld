@@ -1,0 +1,50 @@
+<div class="delta-content">
+    <div class="delta-navbar-top">
+        <ng-include src="'views/common/templates/navbar-top.view.client.html'">
+    </div>
+    <div class="container">
+        <div class="delta-object-content">
+            <div>
+                <h3 class="delta-object-title-name">Results for Games: </h3>
+                <ul ng-show="model.searchResult" ng-repeat="book in model.searchResult" class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img class="delta-list-image" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" width="60" height="80">
+                            </div>
+                            <div class="col-xs-8">
+                                <a href="#!/book/{{book.id}}/detail" role="button">
+                                    <h4 class="delta-object-title-name">{{book.volumeInfo.title}}</h4></a>
+                                <p class="hidden-xs">{{book.volumeInfo.averageRating}}</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div ng-hide="model.searchResult.length > 0">
+                    <i>No Games for the search query</i>
+                </div>
+            </div>
+            <div ng-show="model.loggedUser">
+                <h3 class="delta-object-title-name">Results for Users: </h3>
+                <ul ng-show="model.searchResultUsers"
+                    ng-repeat="user in model.searchResultUsers" class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <img class="delta-list-image" ng-src="{{user.cover}}" width="60" height="60">
+                            </div>
+                            <div class="col-xs-8">
+                                <a href="#!/profile/{{user.username}}" role="button">
+                                    <h4 class="delta-object-title-name">{{user.firstName}} {{user.lastName}}</h4></a>
+                                <p class="delta-object-sub-title">{{user.username}}</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div ng-hide="model.searchResultUsers.length > 0">
+                    <i>No Users found for the search query</i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

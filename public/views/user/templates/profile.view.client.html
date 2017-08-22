@@ -1,0 +1,106 @@
+<div class="delta-content">
+    <div class="delta-navbar-top">
+        <ng-include src="'views/common/templates/navbar-top.view.client.html'">
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="visible-lg col-lg-1"></div>
+            <div class="col-xs-12 col-lg-10 col-md-12">
+                <div class="row delta-object">
+                    <div class="col-md-3">
+                        <div class="delta-object-sidebar">
+                            <div class="delta-object-image">
+                                <img ng-src="{{ model.user.cover }}" class="img-responsive" alt="">
+                            </div>
+                            <div class="delta-object-title">
+                                <div class="delta-object-title-name">
+                                    {{ model.user.firstName }} {{ model.user.lastName}}
+                                </div>
+                                <div class="delta-object-sub-title">{{ model.user.username }}</div>
+                            </div>
+                            <div ng-hide="model.isLoggedUser || model.loggedUser.isAdmin" class="delta-object-buttons">
+                                <div ng-switch="model.followed">
+                                    <div ng-switch-when=false>
+                                        <a role="button" class="btn btn-success btn-sm"
+                                           ng-click="model.followUser(model.userId)">Follow</a>
+                                    </div>
+                                    <div ng-switch-when=true>
+                                        <a role="button" class="btn btn-danger btn-sm"
+                                           ng-click="model.unFollowUser(model.userId)">Unfollow</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="delta-object-menu">
+                                <ul class="nav">
+                                    <li ng-show="model.isLoggedUser || (model.loggedUser.isAdmin)"
+                                        ng-class="{active : model.isActive('PROFILE')}">
+                                        <a ng-click="model.setContentType('PROFILE')" role="button">
+                                            <i class="fa fa-home"></i>Profile</a>
+                                    </li>
+                                    <li ng-hide="model.loggedUser.isAdmin || model.loggedUser.isSeller"
+                                        ng-class="{active : model.isActive('BOOKS')}">
+                                        <a ng-click="model.setContentType('BOOKS')" role="button">
+                                            <i class="fa fa-gamepad"></i>Books</a>
+                                    </li>
+                                    <li ng-hide="model.loggedUser.isAdmin || model.loggedUser.isPlayer"
+                                        ng-class="{active : model.isActive('INVENTORY')}">
+                                        <a ng-click="model.setContentType('INVENTORY')" role="button">
+                                            <i class="fa fa-gamepad"></i>Inventory</a>
+                                    </li>
+                                    <li ng-show="!model.loggedUser.isAdmin"
+                                        ng-class="{active : model.isActive('LIKED')}">
+                                        <a ng-click="model.setContentType('LIKED')" role="button">
+                                            <i class="fa fa-bookmark"></i>Liked</a>
+                                    </li>
+                                    <li ng-show="!model.loggedUser.isAdmin"
+                                        ng-class="{active : model.isActive('FOLLOWING')}">
+                                        <a ng-click="model.setContentType('FOLLOWING')" role="button">
+                                            <i class="fa fa-users"></i>Following</a>
+                                    </li>
+                                    <li ng-show="!model.loggedUser.isAdmin"
+                                        ng-class="{active : model.isActive('FOLLOWERS')}">
+                                        <a ng-click="model.setContentType('FOLLOWERS')" role="button">
+                                            <i class="fa fa-users"></i>Followers</a>
+                                    </li>
+                                    <li ng-show="model.loggedUser.isAdmin && model.isLoggedUser"
+                                        ng-class="{active : model.isActive('USERS')}">
+                                        <a ng-click="model.setContentType('USERS')" role="button">
+                                            <i class="fa fa-users"></i>Users</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="delta-object-content">
+                            <div ng-switch="model.contentType">
+                                <div ng-switch-when="PROFILE">
+                                    <ng-include src="'views/user/templates/content/user.profile.view.client.html'">
+                                </div>
+                                <div ng-switch-when="BOOKS">
+                                    <ng-include src="'views/user/templates/content/user.books.view.client.html'">
+                                </div>
+                                <div ng-switch-when="INVENTORY">
+                                    <ng-include src="'views/user/templates/content/user.inventory.view.client.html'">
+                                </div>
+                                <div ng-switch-when="LIKED">
+                                    <ng-include src="'views/user/templates/content/user.games.view.client.html'">
+                                </div>
+                                <div ng-switch-when="FOLLOWING">
+                                    <ng-include src="'views/user/templates/content/user.follows.view.client.html'">
+                                </div>
+                                <div ng-switch-when="FOLLOWERS">
+                                    <ng-include src="'views/user/templates/content/user.follows.view.client.html'">
+                                </div>
+                                <div ng-switch-when="USERS">
+                                    <ng-include src="'views/user/templates/content/user.follows.view.client.html'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="visible-lg col-lg-1"></div>
+        </div>
+    </div>
+</div>

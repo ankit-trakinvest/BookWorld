@@ -1,0 +1,109 @@
+.delta-object {
+    margin: 20px 0;
+}
+
+.delta-object-sidebar {
+    padding: 20px 0 10px 0;
+    background: #fff;
+}
+
+.delta-object-text {
+    color: #00838f;
+}
+
+.delta-object-image img {
+    float: none;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.delta-object-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.delta-object-title-name {
+    color: #00838f;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.delta-object-title-head {
+    color: #00838f;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 7px;
+    text-align: center;
+}
+
+.delta-object-sub-title {
+    text-transform: uppercase;
+    color: #5a7391;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.delta-object-buttons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.delta-object-buttons .btn {
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 6px 15px;
+    margin-right: 5px;
+}
+
+.delta-object-buttons .btn:last-child {
+    margin-right: 0px;
+}
+
+.delta-object-menu {
+    margin-top: 30px;
+}
+
+.delta-object-menu ul li {
+    border-bottom: 1px solid #f0f4f7;
+}
+
+.delta-object-menu ul li:last-child {
+    border-bottom: none;
+}
+
+.delta-object-menu ul li a {
+    color: #93a3b5;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.delta-object-menu ul li a i {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.delta-object-menu ul li a:hover {
+    background-color: #fafcfd;
+    color: #00838f;
+}
+
+.delta-object-menu ul li.active {
+    border-bottom: none;
+}
+
+.delta-object-menu ul li.active a {
+    color: #00838f;
+    background-color: #f6f9fb;
+    border-left: 2px solid #00838f;
+    margin-left: -2px;
+}
+
+/* Profile Content */
+.delta-object-content {
+    padding: 20px;
+    background: #fff;
+    min-height: 460px;
+}
