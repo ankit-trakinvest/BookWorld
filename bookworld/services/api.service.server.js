@@ -57,7 +57,7 @@ function redirectGB(request, response) {
 
 function testAPI(request, response) {
     //var url = encodeURI(body.requestURL);
-    //https://www.giantbomb.com/api/game/3030-49973/?api_key=afd6e6694de225fefbbd0ac7c3b9e92244b477f0&format=json
+    //https://www.giantbomb.com/api/book/3030-49973/?api_key=afd6e6694de225fefbbd0ac7c3b9e92244b477f0&format=json
     https.get({
         host: 'www.giantbomb.com',
         path: "/api/book/3030-49973/?api_key=afd6e6694de225fefbbd0ac7c3b9e92244b477f0&format=json",

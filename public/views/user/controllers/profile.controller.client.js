@@ -10,10 +10,10 @@
         model.loggedUser = sessionUser;
         model.contentType = 'PROFILE';
         model.followed = false;
-        model.viewGames = null;
+        model.viewBooks = null;
         model.viewUsers = null;
-        model.ownedGames = null;
-        model.likedGames = null;
+        model.ownedBooks = null;
+        model.likedBooks = null;
         model.followers = null;
         model.following = null;
         model.inventory = null;
@@ -39,7 +39,7 @@
                         if (model.loggedUser.isAdmin) {
                             model.contentType = 'PROFILE';
                         } else {
-                            model.contentType = 'GAMES';
+                            model.contentType = 'BOOKS';
                         }
                         model.isLoggedUser = false;
                         model.userId = user._id;
@@ -51,27 +51,27 @@
                             .then(function (value) {
                                 model.followed = value;
                             });
-                        loadUserGames();
-                        model.viewGames = model.ownedGames;
+                        loadUserBooks();
+                        model.viewBooks = model.ownedBooks;
                     });
             }
         }
 
         init();
 
-        function loadUserGames() {
-            userService.getOwnedGamesByUser(model.userId)
-                .then(function (games) {
-                    model.ownedGames = games;
-                    model.viewGames = model.ownedGames;
+        function loadUserBooks() {
+            userService.getOwnedBooksByUser(model.userId)
+                .then(function (books) {
+                    model.ownedBooks = books;
+                    model.viewBooks = model.ownedBooks;
                 });
         }
 
-        function loadLikedGames() {
-            userService.getLikedGamesByUser(model.userId)
-                .then(function (games) {
-                    model.likedGames = games;
-                    model.viewGames = model.likedGames;
+        function loadLikedBooks() {
+            userService.getLikedBooksByUser(model.userId)
+                .then(function (books) {
+                    model.likedBooks = books;
+                    model.viewBooks = model.likedBooks;
                 });
         }
 
@@ -95,7 +95,7 @@
             userService.getInventoryByUser(model.userId)
                 .then(function (users) {
                     model.inventory = users;
-                    model.viewGames = model.inventory;
+                    model.viewBooks = model.inventory;
                 });
         }
 
@@ -124,18 +124,18 @@
             switch (contentType) {
                 case 'PROFILE':
                     break;
-                case 'GAMES':
-                    if (model.ownedGames === null) {
-                        loadUserGames();
+                case 'BOOKS':
+                    if (model.ownedBooks === null) {
+                        loadUserBooks();
                     } else {
-                        model.viewGames = model.ownedGames;
+                        model.viewBooks = model.ownedBooks;
                     }
                     break;
                 case 'LIKED':
-                    if (model.likedGames === null) {
-                        loadLikedGames();
+                    if (model.likedBooks === null) {
+                        loadLikedBooks();
                     } else {
-                        model.viewGames = model.likedGames;
+                        model.viewBooks = model.likedBooks;
                     }
                     break;
                 case 'FOLLOWERS':
@@ -159,7 +159,7 @@
                     if (model.inventory === null) {
                         loadInventory();
                     } else {
-                        model.viewGames = model.inventory;
+                        model.viewBooks = model.inventory;
                     }
                     break;
             }

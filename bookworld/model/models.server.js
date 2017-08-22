@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
 mongoose.Promise = require("q").Promise;
 
-var connectionString = "mongodb://127.0.0.1:27017/bookworld";
+//var connectionString = "mongodb://127.0.0.1:27017/bookworld";
+var connectionString = "mongodb://admin:zxcvwt80@ds161860.mlab.com:61860/heroku_092hshmc";
 
 if (process.env.MLAB_USERNAME_WEBDEV) { // check if running remotely
     var username = process.env.MLAB_USERNAME_WEBDEV; // get from environment

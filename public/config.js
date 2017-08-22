@@ -59,9 +59,9 @@
                     sessionUser: checkLoginStrict
                 }
             })
-            .when("/book/:gameId/manage", {
+            .when("/book/:bookId/manage", {
                 templateUrl: "views/book/templates/book-manage.view.client.html",
-                controller: "gameManageController",
+                controller: "bookManageController",
                 controllerAs: "model",
                 resolve: {
                     sessionUser: checkLoginStrict

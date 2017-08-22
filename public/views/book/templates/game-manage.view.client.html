@@ -10,10 +10,10 @@
                     <li ng-repeat="listing in model.listings" class="list-group-item">
                         <div class="row">
                             <div class="col-xs-10">
-                                <a href="#!/game/{{listing._game._id}}/detail"><b>{{listing._game.name}}</b></a>
+                                <a href="#!/book/{{listing._book._id}}/detail"><b>{{listing._book.name}}</b></a>
                             </div>
                             <div class="col-xs-2">
-                                <a href="#!/game/{{listing._game._id}}/manage"><span
+                                <a href="#!/book/{{listing._book._id}}/manage"><span
                                         class="glyphicon glyphicon-cog pull-right"></span></a>
                             </div>
                         </div>
@@ -24,8 +24,8 @@
                 <label for="name">Name</label>
                 <input name="Name" ng-model="model.inventory.name" class="form-control" id="name" readonly/>
 
-                <label for="gameId">GameId</label>
-                <input name="GameId" ng-model="model.inventory._game" class="form-control" id="gameId" readonly/>
+                <label for="bookId">BookId</label>
+                <input name="BookId" ng-model="model.inventory._book" class="form-control" id="bookId" readonly/>
 
                 <label for="quantity">Quantity</label>
                 <input name="Quantity" ng-model="model.inventory.quantity" class="form-control" id="quantity"/>

@@ -5,19 +5,19 @@
 
     function searchController($location, $routeParams, googleBookService, sessionUser, userService) {
         var model = this;
-        model.searchGames = searchGames;
+        model.searchBooks = searchBooks;
         model.getBookURL = getBookURL;
         model.searchTerm = $routeParams["q"];
         model.loggedUser = sessionUser;
 
 
         function init() {
-            searchGames();
+            searchBooks();
         }
 
         init();
 
-        function searchGames() {
+        function searchBooks() {
             googleBookService.searchBooks(model.searchTerm)
                 .then(function (response) {
                     console.log(response);
@@ -31,8 +31,8 @@
 
         function getBookURL(externalId) {
             googleBookService.findBookByExternalId(externalId)
-                .then(function (game) {
-                    $location.url("/book/" + game._id + "/detail");
+                .then(function (book) {
+                    $location.url("/book/" + book._id + "/detail");
                 });
         }
     }

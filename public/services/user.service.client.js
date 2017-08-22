@@ -6,9 +6,9 @@
             "createUser": createUser,
             "findUserById": findUserById,
             "findUserByUsername": findUserByUsername,
-            "getOwnedGamesByUser": getOwnedGamesByUser,
+            "getOwnedBooksByUser": getOwnedBooksByUser,
             "getInventoryByUser": getInventoryByUser,
-            "getLikedGamesByUser": getLikedGamesByUser,
+            "getLikedBooksByUser": getLikedBooksByUser,
             "login": login,
             "checkLogin": checkLogin,
             "logout": logout,
@@ -32,8 +32,8 @@
             return $http.post(url, inventory).then(successCallback, errorCallback);
         }
 
-        function removeInventory(userId, gameId) {
-            var url = "/api/user/" + userId + "/inventory/" + gameId;
+        function removeInventory(userId, bookId) {
+            var url = "/api/user/" + userId + "/inventory/" + bookId;
 
             return $http.delete(url).then(successCallback, errorCallback);
         }
@@ -80,7 +80,7 @@
                 });
         }
 
-        function getOwnedGamesByUser(userId) {
+        function getOwnedBooksByUser(userId) {
             var url = "/api/user/" + userId + "/owned";
 
             return $http.get(url).then(successCallback, errorCallback);
@@ -92,7 +92,7 @@
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        function getLikedGamesByUser(userId) {
+        function getLikedBooksByUser(userId) {
             var url = "/api/user/" + userId + "/liked";
 
             return $http.get(url).then(successCallback, errorCallback);

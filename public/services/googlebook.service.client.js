@@ -34,7 +34,7 @@
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        // function searchGames(searchQuery) {
+        // function searchBooks(searchQuery) {
         //     var url = "/api/redirectGB";
         //     var body = {
         //         "requestType": "GET",
@@ -43,21 +43,21 @@
         //     return $http.post(url, body).then(successCallback, errorCallback);
         // }
         //
-        // function getGameById(gameId) {
+        // function getBookById(bookId) {
         //     var url = "/api/redirectGB";
         //     var body = {
         //         "requestType": "GET",
-        //         "requestURL": "/api/book/3030-" + gameId + "/?"
+        //         "requestURL": "/api/book/3030-" + bookId + "/?"
         //     };
         //     return $http.post(url, body).then(successCallback, errorCallback);
         // }
         //
-        // function getGameObject(gameData) {
+        // function getBookObject(bookData) {
         //     return {
-        //         "externalId": gameData.id,
-        //         "name": gameData.name,
-        //         "description": gameData.deck,
-        //         "cover": gameData.image.small_url
+        //         "externalId": bookData.id,
+        //         "name": bookData.name,
+        //         "description": bookData.deck,
+        //         "cover": bookData.image.small_url
         //     }
         // }
 

@@ -13,18 +13,18 @@
                                 <img ng-src="{{model.bookInfo.imageLinks.thumbnail}}" class="img-responsive" alt="">
                             </div>
                             <div class="delta-object-title">
-                                <div class="delta-object-title-name">{{ model.gameInfo.name }}</div>
-                                <div class="delta-object-sub-title">{{ model.gameInfo.developers[0].name }}</div>
+                                <div class="delta-object-title-name">{{ model.bookInfo.name }}</div>
+                                <div class="delta-object-sub-title">{{ model.bookInfo.developers[0].name }}</div>
                             </div>
                             <div class="delta-object-buttons">
                                 <div ng-hide="model.loggedUser.isAdmin" ng-switch="model.liked">
                                     <div ng-switch-when=false>
                                         <a role="button" class="btn btn-success btn-sm"
-                                           ng-click="model.likeGame()">Like</a>
+                                           ng-click="model.likeBook()">Like</a>
                                     </div>
                                     <div ng-switch-when=true>
                                         <a role="button" class="btn btn-danger btn-sm"
-                                           ng-click="model.unLikeGame()">Dislike</a>
+                                           ng-click="model.unLikeBook()">Dislike</a>
                                     </div>
                                 </div>
                             </div>
@@ -33,17 +33,17 @@
                                     <div ng-switch="model.owned">
                                         <div ng-switch-when=false>
                                             <a role="button" class="btn btn-primary btn-sm"
-                                               ng-click="model.buyGame()">Buy Game</a>
+                                               ng-click="model.buyBook()">Buy Book</a>
                                         </div>
                                         <div ng-switch-when=true>
-                                            <h5 class="delta-object-text"><i>You own this game!</i></h5>
+                                            <h5 class="delta-object-text"><i>You own this book!</i></h5>
                                         </div>
                                     </div>
                                 </div>
                                 <div ng-show="model.loggedUser.isSeller">
                                     <div>
                                         <a role="button" class="btn btn-primary btn-sm"
-                                           ng-click="model.sellGame()">Game Inventory</a>
+                                           ng-click="model.sellBook()">Book Inventory</a>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                             Overview </a>
                                     </li>
                                     <li ng-hide=true>
-                                        <a href="#"><i class="fa fa-gamepad"></i>Gameplay </a>
+                                        <a href="#"><i class="fa fa-book"></i>Bookplay </a>
                                     </li>
                                 </ul>
                             </div>

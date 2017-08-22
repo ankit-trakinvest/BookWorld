@@ -5,7 +5,7 @@
     <div class="container">
         <div class="delta-object-content">
             <div>
-                <h3 class="delta-object-title-name">Results for Games: </h3>
+                <h3 class="delta-object-title-name">Results for Books: </h3>
                 <ul ng-show="model.searchResult" ng-repeat="book in model.searchResult" class="list-group">
                     <li class="list-group-item">
                         <div class="row">
@@ -21,7 +21,7 @@
                     </li>
                 </ul>
                 <div ng-hide="model.searchResult.length > 0">
-                    <i>No Games for the search query</i>
+                    <i>No Books for the search query</i>
                 </div>
             </div>
             <div ng-show="model.loggedUser">

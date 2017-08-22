@@ -23,24 +23,24 @@ app.get("/api/user/:userId", findUserById);
 app.put("/api/user/:userId", updateUser);
 app.delete("/api/user/:userId", deleteUser);
 
-app.get("/api/user/:userId/liked", findLikedGamesByUser);
-app.get("/api/user/:userId/liked/:gameId", isLiked);
-app.get("/api/user/:userId/owned", findOwnedGamesByUser);
+app.get("/api/user/:userId/liked", findLikedBooksByUser);
+app.get("/api/user/:userId/liked/:bookId", isLiked);
+app.get("/api/user/:userId/owned", findOwnedBooksByUser);
 
 app.get("/api/user/:userId/inventory", getInventoryByUser);
-app.delete("/api/user/:userId/inventory/:gameId", removeInventory);
+app.delete("/api/user/:userId/inventory/:bookId", removeInventory);
 app.post("/api/user/:userId/inventory", upsertInventory);
 
 
-app.get("/api/user/:userId/owned/:gameId", isOwned);
+app.get("/api/user/:userId/owned/:bookId", isOwned);
 app.get("/api/user/:userId/following", getFollowing);
 app.get("/api/user/:userId/following/:userId2", isFollowing);
 app.get("/api/user/:userId/followers", getFollowers);
 app.get("/api/user/:userId/followers/:userId2", isFollower);
 
-app.get("/api/user/:userId/buy/:gameId", buyGame);
-app.get("/api/user/:userId/like/:gameId", likeGame);
-app.get("/api/user/:userId/unlike/:gameId", unLikeGame);
+app.get("/api/user/:userId/buy/:bookId", buyBook);
+app.get("/api/user/:userId/like/:bookId", likeBook);
+app.get("/api/user/:userId/unlike/:bookId", unLikeBook);
 app.get("/api/user/:userId/follow/:userId2", followUser);
 app.get("/api/user/:userId/unfollow/:userId2", unFollowUser);
 app.get('/google/callback', passport.authenticate('google', {
@@ -265,13 +265,13 @@ function deleteUser(request, response) {
         });
 }
 
-function findOwnedGamesByUser(request, response) {
+function findOwnedBooksByUser(request, response) {
     var userId = request.params.userId;
 
-    userModel.findUserById(userId).populate("games")
+    userModel.findUserById(userId).populate("books")
         .exec()
         .then(function (user) {
-            response.json(user.games);
+            response.json(user.books);
         }, function (error) {
             response.sendStatus(404).error(error);
         });
@@ -280,7 +280,7 @@ function findOwnedGamesByUser(request, response) {
 function getInventoryByUser(request, response) {
     var userId = request.params.userId;
 
-    userModel.findUserById(userId).populate('inventory._game')
+    userModel.findUserById(userId).populate('inventory._book')
         .exec()
         .then(function (user) {
             response.json(user.inventory);
@@ -289,7 +289,7 @@ function getInventoryByUser(request, response) {
         });
 }
 
-function findLikedGamesByUser(request, response) {
+function findLikedBooksByUser(request, response) {
     var userId = request.params.userId;
 
     userModel.findUserById(userId).populate("liked")
@@ -347,11 +347,11 @@ function isFollower(request, response) {
 
 function isLiked(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var bookId = request.params.bookId;
 
     userModel.findUserById(userId)
         .then(function (user) {
-            if (user.liked.indexOf(gameId) >= 0) {
+            if (user.liked.indexOf(bookId) >= 0) {
                 response.send(true);
             } else {
                 response.send(false);
@@ -363,11 +363,11 @@ function isLiked(request, response) {
 
 function isOwned(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var bookId = request.params.bookId;
 
     userModel.findUserById(userId)
         .then(function (user) {
-            if (user.games.indexOf(gameId) >= 0) {
+            if (user.books.indexOf(bookId) >= 0) {
                 response.send(true);
             } else {
                 response.send(false);
@@ -377,11 +377,11 @@ function isOwned(request, response) {
         });
 }
 
-function likeGame(request, response) {
+function likeBook(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var bookId = request.params.bookId;
 
-    userModel.addLike(userId, gameId)
+    userModel.addLike(userId, bookId)
         .then(function (user) {
             response.send(user);
         }, function (error) {
@@ -389,11 +389,11 @@ function likeGame(request, response) {
         });
 }
 
-function buyGame(request, response) {
+function buyBook(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var bookId = request.params.bookId;
 
-    userModel.addGame(userId, gameId)
+    userModel.addBook(userId, bookId)
         .then(function (user) {
             response.send(user);
         }, function (error) {
@@ -401,11 +401,11 @@ function buyGame(request, response) {
         });
 }
 
-function unLikeGame(request, response) {
+function unLikeBook(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var bookId = request.params.bookId;
 
-    userModel.removeLike(userId, gameId)
+    userModel.removeLike(userId, bookId)
         .then(function (user) {
             response.send(user);
         }, function (error) {
@@ -470,9 +470,9 @@ function searchUsers(request, response) {
 
 function removeInventory(request, response) {
     var userId = request.params.userId;
-    var gameId = request.params.gameId;
+    var bookId = request.params.bookId;
 
-    return userModel.removeInventory(userId, gameId)
+    return userModel.removeInventory(userId, bookId)
         .then(function () {
             response.sendStatus(200);
         }, function (error) {

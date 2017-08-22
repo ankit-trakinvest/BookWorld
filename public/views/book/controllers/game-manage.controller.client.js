@@ -1,14 +1,14 @@
 (function () {
     angular
         .module("BookWorld")
-        .controller("gameManageController", gameManageController);
+        .controller("bookManageController", bookManageController);
 
-    function gameManageController($routeParams, gameService, $location, sessionUser, userService) {
+    function bookManageController($routeParams, bookService, $location, sessionUser, userService) {
         var model = this;
         model.updateListing = updateListing;
         model.deleteListing = deleteListing;
         model.userId = sessionUser._id;
-        model.gameId = $routeParams["gameId"];
+        model.bookId = $routeParams["bookId"];
         model.loggedUser = sessionUser;
         model.inventory = null;
 
@@ -17,20 +17,20 @@
                 .then(function (listings) {
                     model.listings = listings;
                     for (var i = 0; i < model.listings.length; i++) {
-                        if (model.listings[i]._game._id === model.gameId) {
+                        if (model.listings[i]._book._id === model.bookId) {
                             model.inventory = angular.copy(model.listings[i]);
-                            model.inventory.name = model.listings[i]._game.name;
-                            model.inventory._game = model.gameId;
+                            model.inventory.name = model.listings[i]._book.name;
+                            model.inventory._book = model.bookId;
                             break;
                         }
                     }
                     if (model.inventory === null) {
-                        gameService.findGameById(model.gameId)
-                            .then(function (game) {
-                                model.game = game;
+                        bookService.findBookById(model.bookId)
+                            .then(function (book) {
+                                model.book = book;
                                 model.inventory = {};
-                                model.inventory._game = model.gameId;
-                                model.inventory.name = game.name;
+                                model.inventory._book = model.bookId;
+                                model.inventory.name = book.name;
                                 model.inventory.price = 0;
                                 model.inventory.quantity = 0;
                             });
@@ -50,7 +50,7 @@
         }
 
         function deleteListing() {
-            userService.removeInventory(model.userId, model.gameId)
+            userService.removeInventory(model.userId, model.bookId)
                 .then(function () {
                     $location.url("/profile");
                 });

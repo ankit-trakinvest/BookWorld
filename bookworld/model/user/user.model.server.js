@@ -12,9 +12,9 @@ userModel.findUserByUsername = findUserByUsername;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.updateUser = updateUser;
 userModel.deleteUser = deleteUser;
-userModel.addGame = addGame;
+userModel.addBook = addBook;
 userModel.addLike = addLike;
-userModel.removeGame = removeGame;
+userModel.removeBook = removeBook;
 userModel.removeLike = removeLike;
 userModel.addFollow = addFollow;
 userModel.removeFollow = removeFollow;
@@ -31,30 +31,30 @@ function createUser(user) {
     return userModel.create(user);
 }
 
-function addGame(userId, gameId) {
+function addBook(userId, bookId) {
     return userModel.findById(userId)
         .then(function (user) {
-            user.games.push(gameId);
+            user.books.push(bookId);
             return user.save();
         })
 }
 
-function removeGame(userId, gameId) {
+function removeBook(userId, bookId) {
     return userModel.findById(userId)
         .then(function (user) {
-            var index = user.games.indexOf(gameId);
-            user.games.splice(index, 1);
+            var index = user.books.indexOf(bookId);
+            user.books.splice(index, 1);
             return user.save();
         });
 }
 
-function removeInventory(userId, gameId) {
+function removeInventory(userId, bookId) {
     return userModel.findById(userId)
         .then(function (user) {
             var inventory = user.inventory;
             var index = -1;
             for (var i = 0; i < inventory.length; i++) {
-                if (inventory[i]._game == gameId) {
+                if (inventory[i]._book == bookId) {
                     index = i;
                     break;
                 }
@@ -70,7 +70,7 @@ function upsertInventory(userId, updatedInventory) {
             var inventory = user.inventory;
             var index = -1;
             for (var i = 0; i < inventory.length; i++) {
-                if (inventory[i]._game == updatedInventory._game) {
+                if (inventory[i]._book == updatedInventory._book) {
                     index = i;
                     break;
                 }
@@ -84,18 +84,18 @@ function upsertInventory(userId, updatedInventory) {
         });
 }
 
-function addLike(userId, gameId) {
+function addLike(userId, bookId) {
     return userModel.findById(userId)
         .then(function (user) {
-            user.liked.push(gameId);
+            user.liked.push(bookId);
             return user.save();
         })
 }
 
-function removeLike(userId, gameId) {
+function removeLike(userId, bookId) {
     return userModel.findById(userId)
         .then(function (user) {
-            var index = user.liked.indexOf(gameId);
+            var index = user.liked.indexOf(bookId);
             user.liked.splice(index, 1);
             return user.save();
         })
