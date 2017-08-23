@@ -1,10 +1,10 @@
 (function () {
     angular.module("BookWorld").factory("bookService", bookService);
 
-    function bookService($http) {
+    function bookService($http, googleBookService) {
         var api = {
             "createBook": createBook,
-            // "findBookByExternalId": findBookByExternalId,
+            "findBookByExternalId": findBookByExternalId,
             "isLiked": isLiked,
             "isOwned": isOwned,
             "findBookById": findBookById,
@@ -61,21 +61,22 @@
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        // function findBookByExternalId(externalId) {
-        //     var url = "/api/book?externalId=" + externalId;
-        //
-        //
-        //     return $http.get(url).then(function (response) {
-        //         if (response.status === 204) {
-        //             return giantBombService.getBookById(externalId)
-        //                 .then(function (bookData) {
-        //                     return createBook(giantBombService.getBookObject(bookData.results))
-        //                 })
-        //         } else {
-        //             return successCallback(response);
-        //         }
-        //     }, errorCallback);
-        // }
+        function findBookByExternalId(externalId) {
+            var url = "/api/book?externalId=" + externalId;
+
+
+            return $http.get(url).then(function (response) {
+                if (response.status === 204) {
+                    return googleBookService.getBookById(externalId)
+                        .then(function (bookData) {
+                            console.log(googleBookService.getBookObject(bookData));
+                            return createBook(googleBookService.getBookObject(bookData))
+                        })
+                } else {
+                    return successCallback(response);
+                }
+            }, errorCallback);
+        }
 
         function updateBook(bookId, book) {
             var url = "/api/book/" + bookId;

@@ -10,12 +10,13 @@
                     <li class="list-group-item">
                         <div class="row">
                             <div class="col-xs-4">
-                                <img class="delta-list-image" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" width="60" height="80">
+                                <img class="delta-list-image" ng-src="{{book.volumeInfo.imageLinks.thumbnail}}"
+                                     width="60" height="80">
                             </div>
                             <div class="col-xs-8">
-                                <a href="#!/book/{{book.id}}/detail" role="button">
+                                <a ng-click="model.getBookURL(book.id)" role="button">
                                     <h4 class="delta-object-title-name">{{book.volumeInfo.title}}</h4></a>
-                                <p class="hidden-xs">{{book.volumeInfo.averageRating}}</p>
+                                <p class="hidden-xs">{{book.volumeInfo.authors[0]}}</p>
                             </div>
                         </div>
                     </li>

@@ -3,7 +3,7 @@
         .module("BookWorld")
         .controller("searchController", searchController);
 
-    function searchController($location, $routeParams, googleBookService, sessionUser, userService) {
+    function searchController($location, $routeParams, googleBookService, sessionUser, userService, bookService) {
         var model = this;
         model.searchBooks = searchBooks;
         model.getBookURL = getBookURL;
@@ -20,7 +20,6 @@
         function searchBooks() {
             googleBookService.searchBooks(model.searchTerm)
                 .then(function (response) {
-                    console.log(response);
                     model.searchResult = response.items;
                 });
             userService.searchUsers(model.searchTerm)
@@ -30,7 +29,7 @@
         }
 
         function getBookURL(externalId) {
-            googleBookService.findBookByExternalId(externalId)
+            bookService.findBookByExternalId(externalId)
                 .then(function (book) {
                     $location.url("/book/" + book._id + "/detail");
                 });
