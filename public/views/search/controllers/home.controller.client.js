@@ -13,6 +13,7 @@
         }
 
         init();
+
         function search(searchTerm) {
             $location.url("/search?q=" + searchTerm);
         }

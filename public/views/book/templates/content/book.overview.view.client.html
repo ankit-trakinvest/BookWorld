@@ -4,7 +4,7 @@
     </li>
     <li class="list-group-item">
         <label class="delta-object-text">Summary:</label>
-        <p><i>{{ model.bookInfo.description }}</i></p>
+        <p ng-bind-html="model.trustThisContent(model.bookInfo.description)"></p>
     </li>
     <li class="list-group-item">
         <label class="delta-object-text">Author:</label>
@@ -14,51 +14,34 @@
     </li>
     <li class="list-group-item">
         <label class="delta-object-text">Rating:</label>
-        <p><i>{{ model.bookInfo.averageRating }}</i></p>
+        <p><i>{{ model.bookInfo.averageRating }}/5 ({{ model.bookInfo.ratingsCount }} votes)</i></p>
     </li>
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">Developers:</label>-->
-        <!--<ul ng-repeat="developer in model.bookInfo.developers">-->
-            <!--<li>{{developer.name}}</li>-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">Publishers:</label>-->
-        <!--<ul ng-repeat="publisher in model.bookInfo.publishers">-->
-            <!--<li>{{publisher.name}}</li>-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">DLCs:</label>-->
-        <!--<ul ng-repeat="dlc in model.bookInfo.dlcs">-->
-            <!--<li>{{dlc.name}}</li>-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">Genre:</label>-->
-        <!--<ul ng-repeat="genre in model.bookInfo.genres">-->
-            <!--<li>{{genre.name}}</li>-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">Themes:</label>-->
-        <!--<ul ng-repeat="theme in model.bookInfo.themes">-->
-            <!--<li>{{theme.name}}</li>-->
-        <!--</ul>-->
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">Characters:</label>-->
-        <!--<ul ng-repeat="character in model.bookInfo.characters">-->
-            <!--<li>{{character.name}}</li>-->
-        <!--</ul>-->
-    <!--</li>-->
-    <!--<li class="list-group-item">-->
-        <!--<label class="delta-object-text">Similar Books:</label>-->
-        <!--<ul ng-repeat="similar_book in model.bookInfo.similar_books">-->
-            <!--<li>-->
-                <!--<a ng-click="model.getBookURL(similar_book.id)" role="button">-->
-                    <!--{{similar_book.name}}-->
-                <!--</a>-->
-            <!--</li>-->
-        <!--</ul>-->
-    <!--</li>-->
+    <li class="list-group-item">
+        <label class="delta-object-text">Published Date:</label>
+        {{model.bookInfo.publishedDate}}
+    </li>
+    <li class="list-group-item">
+        <div ng-repeat="identifier in model.bookInfo.industryIdentifiers">
+            <div ng-switch="identifier.type">
+                <div ng-switch-when="ISBN_10">
+                    <label class="delta-object-text">ISBN-10:</label>
+                    {{identifier.identifier}}
+                </div>
+                <div ng-switch-when="ISBN_13">
+                    <label class="delta-object-text">ISBN-13:</label>
+                    {{identifier.identifier}}
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item">
+        <label class="delta-object-text">Publishers:</label>
+        {{model.bookInfo.publisher}}
+    </li>
+    <li class="list-group-item">
+        <label class="delta-object-text">Genre:</label>
+        <ul ng-repeat="category in model.bookInfo.categories">
+            <li>{{category}}</li>
+        </ul>
+    </li>
 </ul>

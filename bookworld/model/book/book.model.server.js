@@ -53,7 +53,6 @@ function removeLike(bookId, userId) {
 }
 
 function createBook(book) {
-    console.log(book);
     return bookModel.create(book);
 }
 
@@ -74,5 +73,5 @@ function updateBook(bookId, book) {
 }
 
 function deleteBook(bookId) {
-   return bookModel.remove({_id: bookId});
+    return bookModel.remove({_id: bookId});
 }

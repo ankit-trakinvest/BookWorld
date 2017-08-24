@@ -1,4 +1,4 @@
-<div class="delta-object-title-head">Liked Books</div>
+<div class="delta-object-title-head">Books</div>
 <ul class="list-group">
     <li ng-repeat="book in model.viewBooks" class="list-group-item">
         <div class="row">
@@ -7,7 +7,7 @@
             </div>
             <div class="col-xs-10 col-sm-8">
                 <a href="#!/book/{{book._id}}/detail"><h4>{{book.name}}</h4></a>
-                <p class="hidden-xs">{{book.description}}</p>
+                <p class="hidden-xs">{{book.authors}}</p>
             </div>
             <div class="col-xs-1">
                 <a href="#!/book/{{book._id}}/manage" ng-show="model.loggedUser.isSeller">

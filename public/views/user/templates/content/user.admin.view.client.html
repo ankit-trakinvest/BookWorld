@@ -11,7 +11,8 @@
             <div class="col-xs-2">
                 <div class="delta-object-buttons">
                     <a ng-show="viewUser.isLoggedUserFollowing"
-                       role="button" class="btn btn-danger btn-sm" ng-click="model.unFollowUser(viewUser._id)">Unfollow</a>
+                       role="button" class="btn btn-danger btn-sm"
+                       ng-click="model.unFollowUser(viewUser._id)">Unfollow</a>
                     <a ng-show="!viewUser.isLoggedUserFollowing"
                        role="button" class="btn btn-success btn-sm" ng-click="model.followUser(viewUser._id)">Follow</a>
                 </div>

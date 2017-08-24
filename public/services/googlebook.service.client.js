@@ -36,33 +36,6 @@
             return $http.get(url).then(successCallback, errorCallback);
         }
 
-        // function searchBooks(searchQuery) {
-        //     var url = "/api/redirectGB";
-        //     var body = {
-        //         "requestType": "GET",
-        //         "requestURL": "/api/search/?query=\"" + searchQuery + "\"&resources=book"
-        //     };
-        //     return $http.post(url, body).then(successCallback, errorCallback);
-        // }
-        //
-        // function getBookById(bookId) {
-        //     var url = "/api/redirectGB";
-        //     var body = {
-        //         "requestType": "GET",
-        //         "requestURL": "/api/book/3030-" + bookId + "/?"
-        //     };
-        //     return $http.post(url, body).then(successCallback, errorCallback);
-        // }
-        //
-        // function getBookObject(bookData) {
-        //     return {
-        //         "externalId": bookData.id,
-        //         "name": bookData.name,
-        //         "description": bookData.deck,
-        //         "cover": bookData.image.small_url
-        //     }
-        // }
-
         function getBookObject(bookData) {
             return {
                 "externalId": bookData.id,

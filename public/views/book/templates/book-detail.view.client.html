@@ -13,8 +13,8 @@
                                 <img ng-src="{{model.bookInfo.imageLinks.thumbnail}}" class="img-responsive" alt="">
                             </div>
                             <div class="delta-object-title">
-                                <div class="delta-object-title-name">{{ model.bookInfo.name }}</div>
-                                <div class="delta-object-sub-title">{{ model.bookInfo.developers[0].name }}</div>
+                                <div class="delta-object-title-name">{{ model.bookInfo.title }}</div>
+                                <div class="delta-object-sub-title">{{ model.bookInfo.authors[0] }}</div>
                             </div>
                             <div class="delta-object-buttons">
                                 <div ng-hide="model.loggedUser.isAdmin" ng-switch="model.liked">

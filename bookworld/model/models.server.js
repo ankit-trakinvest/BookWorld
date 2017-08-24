@@ -17,7 +17,7 @@ mongoose.connection.on('connected', function () {
     console.log("Connected to MongoDB");
 });
 
-mongoose.connection.on('error',function (err) {
+mongoose.connection.on('error', function (err) {
     console.log("Error : couldn't connect to MongoDB " + err);
 });
 

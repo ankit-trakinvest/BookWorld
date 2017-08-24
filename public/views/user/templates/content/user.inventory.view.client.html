@@ -7,7 +7,7 @@
             </div>
             <div class="col-xs-10 col-sm-8">
                 <a href="#!/book/{{book._book._id}}/detail"><h4>{{book._book.name}}</h4></a>
-                <p class="hidden-xs">{{book._book.description}}</p>
+                <p class="hidden-xs">{{book._book.authors}}</p>
             </div>
             <div class="col-xs-1">
                 <a href="#!/book/{{book._book._id}}/manage" ng-show="model.loggedUser.isSeller">
