@@ -40,7 +40,7 @@
             return {
                 "externalId": bookData.id,
                 "name": bookData.volumeInfo.title,
-                "author": bookData.volumeInfo.authors[0],
+                "authors": bookData.volumeInfo.authors[0],
                 "description": bookData.volumeInfo.description,
                 "cover": bookData.volumeInfo.imageLinks.thumbnail
             };
