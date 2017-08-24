@@ -8,7 +8,7 @@
 }
 
 .delta-object-text {
-    color: #00838f;
+    color: #303f9f;
 }
 
 .delta-object-image img {
@@ -23,14 +23,14 @@
 }
 
 .delta-object-title-name {
-    color: #00838f;
+    color: #303f9f;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 7px;
 }
 
 .delta-object-title-head {
-    color: #00838f;
+    color: #303f9f;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 7px;
@@ -87,7 +87,7 @@
 
 .delta-object-menu ul li a:hover {
     background-color: #fafcfd;
-    color: #00838f;
+    color: #303f9f;
 }
 
 .delta-object-menu ul li.active {
@@ -95,9 +95,9 @@
 }
 
 .delta-object-menu ul li.active a {
-    color: #00838f;
+    color: #303f9f;
     background-color: #f6f9fb;
-    border-left: 2px solid #00838f;
+    border-left: 2px solid #303f9f;
     margin-left: -2px;
 }
 
