@@ -53,8 +53,8 @@ app.get('/facebook/callback', passport.authenticate('facebook', {
 }));
 
 var googleConfig = {
-    clientID: '374736085891-gbc0opl6pfl4llknf6ce5p1gjcmggod7.apps.googleusercontent.com',
-    clientSecret: 'c3ibpRcGD2zKlpXWKYRDdgf2',
+    clientID: '213882228271-fh8iirj8cpem0d1bf6c8qcrt1rq2cc2t.apps.googleusercontent.com',
+    clientSecret: 'z1MDwNR38SY-qsru261Jisuj',
     callbackURL: 'http://127.0.0.1:3030/google/callback'
 };
 
